@@ -1,8 +1,11 @@
+package codewar;
+
 public class BowlingExam {
     static String test1="";//300:X|X|X|X|X|X|X|X|X|X||XX
+    static String test4 = "X|X|X|X|X|X|X|X|X|X||XX";//167
     String test2="";//90:9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||
     String test3="";//150:5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5
-    static String test4="X|X|X|X|X|X|X|X|X|X||XX";//167
+
     public static void main(String[] args) {
 
         /*获取分割标记|POS*/

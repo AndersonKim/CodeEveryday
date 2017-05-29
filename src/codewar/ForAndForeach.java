@@ -1,3 +1,5 @@
+package codewar;
+
 /**
  * Created with IDEA.
  * User:AndersonKim

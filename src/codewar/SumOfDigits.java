@@ -1,3 +1,5 @@
+package codewar;
+
 import org.junit.Test;
 
 /**
