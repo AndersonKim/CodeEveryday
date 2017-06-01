@@ -14,6 +14,28 @@ import java.util.Arrays;
  * return [1, 2]
  */
 public class P170601 {
+
+    public boolean getXO(String str) {
+        boolean same = true;
+        int x = 0, o = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'x' || str.charAt(i) == 'X') {
+                x++;
+            }
+            if (str.charAt(i) == 'o' || str.charAt(i) == 'O') {
+                o++;
+            }
+        }
+        if (x == o) same = true;
+        else same = false;
+        return same;
+    }
+
+    public boolean getXO1(String str) {
+        str = str.toLowerCase();
+        return str.replace("o", "").length() == str.replace("x", "").length();
+    }
+
     public int sumOfElements(int matrix[][]) {
         int res = 0;
         for (int i = 0; i < matrix.length; i++) {
@@ -27,6 +49,7 @@ public class P170601 {
     public int sumOfElements1(int matrix[][]) {
 
         return Arrays.stream(matrix).flatMapToInt(Arrays::stream).sum();
+        //return Arrays.stream(matrix).flatMapToInt().sum();
     }
 
     public int[] twoSum(int[] nums, int target) {
