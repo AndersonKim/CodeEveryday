@@ -7,6 +7,8 @@ package LintCode;
  * Time:15:25
  */
 
+import java.util.Arrays;
+
 /**
  * Given nums = [2, 7, 11, 15], target = 9
  * return [1, 2]
@@ -21,6 +23,12 @@ public class P170601 {
         }
         return res;
     }
+
+    public int sumOfElements1(int matrix[][]) {
+
+        return Arrays.stream(matrix).flatMapToInt(Arrays::stream).sum();
+    }
+
     public int[] twoSum(int[] nums, int target) {
         //标注检索的最大位置
         int max_pos = nums.length - 1;
