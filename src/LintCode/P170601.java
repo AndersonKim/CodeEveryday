@@ -14,6 +14,40 @@ import java.util.Arrays;
  * return [1, 2]
  */
 public class P170601 {
+    public int findLongest(int[] numbers) {
+        String[] strs = new String[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            strs[i] = Integer.toString(numbers[i]);
+        }
+
+        int max_len = 0;
+        int index = 0;
+        //定位最长
+        for (int i = 0; i < strs.length; i++) {
+            if (max_len < strs[i].length()) {
+                max_len = strs[i].length();
+                index = i;
+            }
+        }
+        return Integer.parseInt(strs[index]);
+
+    }
+
+    public int findLongest1(int[] numbers) {
+        int index = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (
+                    String.valueOf(Math.abs(numbers[i])).length()
+                            >
+                            String.valueOf(Math.abs(numbers[index])).length()
+                    ) {
+                index = i;
+            }
+        }
+        return numbers[index];
+
+    }
+
     public String makeComplement(String dna) {
         StringBuffer res = new StringBuffer();
         for (int i = 0; i < dna.length(); i++) {
@@ -42,6 +76,7 @@ public class P170601 {
         dna = dna.replaceAll("Z", "G");
         return dna;
     }
+
     public boolean getXO(String str) {
         boolean same = true;
         int x = 0, o = 0;
