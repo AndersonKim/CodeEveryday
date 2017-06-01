@@ -32,6 +32,7 @@ public class P170601 {
     }
 
     public boolean getXO1(String str) {
+        //使用原生函数替换优于自制循环
         str = str.toLowerCase();
         return str.replace("o", "").length() == str.replace("x", "").length();
     }
