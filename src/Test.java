@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println(P170602.covfefe("coverage"));
+        System.out.println(P170602.histogram(new int[]{7, 3, 10, 1, 0, 5}));
 
     }
 }
