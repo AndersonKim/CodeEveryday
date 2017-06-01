@@ -14,7 +14,34 @@ import java.util.Arrays;
  * return [1, 2]
  */
 public class P170601 {
+    public String makeComplement(String dna) {
+        StringBuffer res = new StringBuffer();
+        for (int i = 0; i < dna.length(); i++) {
+            if (dna.charAt(i) == 'A') res.append('T');
+            if (dna.charAt(i) == 'C') res.append('G');
+            if (dna.charAt(i) == 'G') res.append('C');
+            if (dna.charAt(i) == 'T') res.append('A');
+        }
+        return res.toString();
+    }
 
+    public String makeComplement1(String dna) {
+        //引入中间变量Z防止替换错误
+        /**
+         * 直接替换导致的错误
+         * AATTGC-(A,T)
+         * TTTTGC-(T,A)
+         * AAAAGC-()
+         * 使用中间变量避免上述错误
+         */
+        dna = dna.replaceAll("A", "Z");
+        dna = dna.replaceAll("T", "A");
+        dna = dna.replaceAll("Z", "T");
+        dna = dna.replaceAll("C", "Z");
+        dna = dna.replaceAll("G", "C");
+        dna = dna.replaceAll("Z", "G");
+        return dna;
+    }
     public boolean getXO(String str) {
         boolean same = true;
         int x = 0, o = 0;
