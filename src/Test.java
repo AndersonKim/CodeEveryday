@@ -1,4 +1,5 @@
 import LintCode.P170601;
+import codewar.P170602;
 
 import java.util.stream.Stream;
 
@@ -10,9 +11,7 @@ import java.util.stream.Stream;
  */
 public class Test {
     public static void main(String[] args) {
-        P170601 p170601 = new P170601();
-        String s = "TAACG";
-        System.out.println(p170601.makeComplement(s));
+        System.out.println(P170602.covfefe("coverage"));
 
     }
 }
