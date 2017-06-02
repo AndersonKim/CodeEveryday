@@ -10,6 +10,22 @@ import java.util.Map;
  * Time:7:30
  */
 public class P170602 {
+    public static String toJadenCase(String phrase) {
+        // TODO put your code below this comment
+        if (phrase == null || phrase.equals(""))
+            return null;
+        else {
+            String result = "";
+            String[] words = phrase.split(" ");
+            for (String word : words) {
+                String firstChar = String.valueOf(word.charAt(0));
+                firstChar = firstChar.toUpperCase();
+                word = firstChar + word.substring(1);
+                result += " " + word;
+            }
+            return result.trim();
+        }
+    }
 
     public static String decodeResistorColors(String bands) {
         /**
@@ -148,7 +164,6 @@ public class P170602 {
         return result;
     }
 
-
     public static String covfefe(String tweet) {
         String temp = "covfefe";
         String res = null;
@@ -165,5 +180,20 @@ public class P170602 {
         return tweet.contains("coverage") ?
                 tweet.replace("coverage", "covfefe") :
                 tweet + " covfefe";
+    }
+
+    public String toJadenCase1(String phrase) {
+        if (phrase == null || phrase.equals("")) return null;
+
+        char[] array = phrase.toCharArray();
+
+        for (int x = 0; x < array.length; x++) {
+            //使用前向指针确定单词首字母
+            if (x == 0 || array[x - 1] == ' ') {
+                array[x] = Character.toUpperCase(array[x]);
+            }
+        }
+
+        return new String(array);
     }
 }

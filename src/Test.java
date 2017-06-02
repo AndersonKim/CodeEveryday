@@ -11,7 +11,7 @@ import java.util.stream.Stream;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println(P170602.decodeResistorColors("brown black green silver"));
+        System.out.println(P170602.toJadenCase("most trees are blue"));
 
     }
 }
