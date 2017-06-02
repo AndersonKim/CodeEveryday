@@ -10,6 +10,31 @@ import java.util.Map;
  * Time:7:30
  */
 public class P170602 {
+    public static String getMiddle(String word) {
+        if (word.length() % 2 == 1) {
+            return String.valueOf(word.charAt(word.length() / 2));
+        } else {
+            return word.substring((word.length() / 2) - 1, word.length() / 2 + 1);
+        }
+    }
+
+    public static String getMiddle1(String word) {
+        String s = "";
+        int length = word.length();
+        int half = length / 2;
+
+        if (length % 2 == 0) {
+//subString使用注意[a,b)取值区间
+            s = word.substring(half - 1, half + 1);
+
+        } else {
+
+            s = word.substring(half, half + 1);
+
+        }
+
+        return s;
+    }
     public static String toJadenCase1(String phrase) {
         if (phrase == null || phrase.equals("")) return null;
 
