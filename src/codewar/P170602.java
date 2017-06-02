@@ -10,6 +10,20 @@ import java.util.Map;
  * Time:7:30
  */
 public class P170602 {
+    public static String toJadenCase1(String phrase) {
+        if (phrase == null || phrase.equals("")) return null;
+
+        char[] array = phrase.toCharArray();
+
+        for (int x = 0; x < array.length; x++) {
+            //使用前向指针确定单词首字母
+            if (x == 0 || array[x - 1] == ' ') {
+                array[x] = Character.toUpperCase(array[x]);
+            }
+        }
+
+        return new String(array);
+    }
     public static String toJadenCase(String phrase) {
         // TODO put your code below this comment
         if (phrase == null || phrase.equals(""))
@@ -182,18 +196,5 @@ public class P170602 {
                 tweet + " covfefe";
     }
 
-    public String toJadenCase1(String phrase) {
-        if (phrase == null || phrase.equals("")) return null;
 
-        char[] array = phrase.toCharArray();
-
-        for (int x = 0; x < array.length; x++) {
-            //使用前向指针确定单词首字母
-            if (x == 0 || array[x - 1] == ' ') {
-                array[x] = Character.toUpperCase(array[x]);
-            }
-        }
-
-        return new String(array);
-    }
 }
