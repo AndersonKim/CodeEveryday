@@ -164,6 +164,7 @@ public class P170602 {
         return result;
     }
 
+
     public static String covfefe(String tweet) {
         String temp = "covfefe";
         String res = null;
@@ -180,20 +181,5 @@ public class P170602 {
         return tweet.contains("coverage") ?
                 tweet.replace("coverage", "covfefe") :
                 tweet + " covfefe";
-    }
-
-    public String toJadenCase1(String phrase) {
-        if (phrase == null || phrase.equals("")) return null;
-
-        char[] array = phrase.toCharArray();
-
-        for (int x = 0; x < array.length; x++) {
-            //使用前向指针确定单词首字母
-            if (x == 0 || array[x - 1] == ' ') {
-                array[x] = Character.toUpperCase(array[x]);
-            }
-        }
-
-        return new String(array);
     }
 }
