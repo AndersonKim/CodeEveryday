@@ -62,7 +62,34 @@ public class P170603 {
 
     public static String interlace1(final String first, final String second) {
         String result = "";
-        // mix string parameters into result
-        return result;
+        //replaceAll()函数的使用
+        char[] f2 = first.replaceAll(" ", "").toCharArray();
+        char[] s2 = second.replaceAll(" ", "").toCharArray();
+        if (f2.length < s2.length)
+            return interlacing(s2, f2);
+        return interlacing(f2, s2);
+    }
+
+    private static String interlacing(char[] one, char[] two) {
+        StringBuffer sb = new StringBuffer();
+        int counter = 0;
+        for (char c : one) {
+            //先添加第一个单词的字母
+            sb.append(c);
+            //使用counter%two.length获取指针位置
+            /**
+             * counter      counter%two.length
+             *  0               0
+             *  1               1
+             *  2               2
+             *  .               .
+             *  .               .
+             *  .               .
+             *  two.length      0
+             */
+            sb.append(two[counter % two.length]);
+            counter++;
+        }
+        return sb.toString();
     }
 }
