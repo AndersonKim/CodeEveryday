@@ -51,6 +51,22 @@ public class P170604 {
         return res;
     }
 
+    public static String[] sortString(String str) {
+        String[] res = str.split(" ");
+        Arrays.sort(res, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int offset;
+                offset = o1.length() - o2.length();
+                if (offset == 0) {
+                    o2.compareTo(o1);
+                }
+                return offset;
+            }
+        });
+        return res;
+    }
+
     static class Comp implements Comparator<String> {
         public int compare(String c1, String c2) {
             int n;
