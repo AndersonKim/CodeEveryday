@@ -9,6 +9,23 @@ import java.util.*;
  * Time:13:40
  */
 public class P170604 {
+
+    //使用lamb表达式计算特定字符
+    public static int stringCounter1(String inputS, char charS) {
+        return (int) inputS.chars().filter(c -> c == charS).count();
+    }
+
+    public static int stringCounter(String inputS, char charS) {
+        char[] _chars = inputS.toCharArray();
+        int flag = 0;
+        for (char ch : _chars) {
+            if (ch == charS) {
+                flag++;
+            }
+        }
+        return flag;
+    }
+
     public static Boolean containAllRots(String strng, List<String> arr) {
         // your code
         int flag = 0;
