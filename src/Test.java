@@ -1,6 +1,9 @@
 
 import codewar.*;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -13,15 +16,7 @@ import java.util.stream.Stream;
  */
 public class Test {
     public static void main(String[] args) {
-        List<String> s = new ArrayList<String>();
-        s.add("bsjq");
-        s.add("qbsj");
-        s.add("sjqb");
-        s.add("jqbs");
-        s.add("twZNsslC");
-
-        System.out.println(P170604.containAllRots("bsjq", s));
-
-
+        P170606 p = new P170606();
+        System.out.println(p.encode("   ()(   "));
     }
 }
