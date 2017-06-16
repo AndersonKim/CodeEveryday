@@ -11,8 +11,6 @@ import CodeInJava.C5.MyClass;
 public class Test {
     public static void main(String[] args) {
         MyClass a = new MyClass("123");
-        a.bark(1);
-        a.twen(1, "qwe");
-        a.twen("qwe", 1);
+        a.varargs("123", "1312");
     }
 }

@@ -21,10 +21,20 @@ public class MyClass {
         str = "";
         System.out.println("创建了一个对象");
     }
-
     public MyClass(String arg) {
         System.out.println("使用了 " + arg + " 构造了对象");
     }
+
+    /**
+     * 使用可变参数列表
+     *
+     * @param args
+     */
+    public void varargs(Object... args) {
+        for (Object o : args) {
+            System.out.println(o.toString());
+        }
+}
 
     public void bark(int i) {
         System.out.println("int");
@@ -52,6 +62,23 @@ public class MyClass {
 
     public boolean isNull() {
         return str == null ? true : false;
+    }
+
+    public void play(PC pc) {
+        PC pc1 = pc.getGame();
+    }
+
+    class PC {
+        public PC getGame() {
+            Getter g = new Getter();
+            return g.get(this);
+        }
+    }
+
+    class Getter {
+        public PC get(PC pc) {
+            return pc;
+        }
     }
 }
 
