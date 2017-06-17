@@ -35,6 +35,9 @@ public class Hero implements Comparable<Hero> {
      */
     @Override
     public int compareTo(Hero o) {
-        return (Health < o.Health ? -1 : (Health == o.Health ? 0 : 1));
+        //自定义攻击/血量为有价值的英雄
+        float _1 = Attack / Health;
+        float _2 = o.Attack / o.Health;
+        return (_1 < _2 ? -1 : (_1 == _2 ? 0 : 1));
     }
 }
