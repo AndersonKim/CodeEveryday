@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  */
 public class Test {
     public static void main(String[] args) {
-        P170606 p = new P170606();
-        System.out.println(p.encode("   ()(   "));
+        P170619 p = new P170619();
+        System.out.println(p.countPairsInt(3, 50 * 2));
     }
 }
