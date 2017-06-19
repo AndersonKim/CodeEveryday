@@ -17,6 +17,6 @@ import java.util.stream.Stream;
 public class Test {
     public static void main(String[] args) {
         P170619 p = new P170619();
-        p.countDivisors(50);
+        p.encode("aelmou");
     }
 }
