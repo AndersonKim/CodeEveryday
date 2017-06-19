@@ -9,6 +9,19 @@ import java.util.*;
  * Time:13:42
  */
 public class P170619 {
+    public static int duplicateCount(String text) {
+        int ans = 0;
+        //avoid A a
+        text = text.toLowerCase();
+        while (text.length() > 0) {
+            String firstLetter = text.substring(0, 1);
+            text = text.substring(1);
+            if (text.contains(firstLetter)) ans++;
+            text = text.replace(firstLetter, "");
+        }
+        return ans;
+    }
+
     public int countPairsInt(int diff, long nMax) {
         // your code
         int count = 0;
