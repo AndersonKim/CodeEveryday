@@ -11,30 +11,28 @@ public class P170619 {
         // your code
         int count = 0;
 
-        int divisorsNum = 0;
-        int a = 1;
-        while (true) {
-            int b = a + diff;
-            if (b > nMax) break;
-            if (countDivisors(a) == countDivisors(b))
+
+        for (int i = 1; i < nMax - diff; i++) {
+            if (countDivisors(i) == countDivisors(i + diff))
                 count++;
-            a++;
         }
 
         return count;
     }
 
-    private int countDivisors(int a) {
+    public int countDivisors(int a) {
         int count = 0;
-        for (int i = 1; i <= a; i++) {
-            if (a % i == 0) count++;
+        //using a/2 to decrease the consume of memory
+        /**
+         * because when number to a/2 there only have number itself to divide
+         */
+        for (int i = 1; i <= a / 2; i++) {
+            if (a % i == 0) {
+                count++;
+            }
         }
-        return count;
+        return count + 1;
     }
 
-    public int countPairsInt1(int diff, long nMax) {
-        // your code
-        int a = 0;
-        return a;
-    }
+
 }
