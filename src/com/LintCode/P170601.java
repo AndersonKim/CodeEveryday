@@ -7,6 +7,8 @@ package LintCode;
  * Time:15:25
  */
 
+import org.junit.Test;
+
 import java.util.Arrays;
 
 /**
@@ -109,9 +111,9 @@ public class P170601 {
         return res;
     }
 
-    public int sumOfElements1(int matrix[][]) {
+    public void sumOfElements1(int matrix[][]) {
 
-        return Arrays.stream(matrix).flatMapToInt(Arrays::stream).sum();
+        //return Arrays.stream(matrix).flatMapToInt(Arrays::stream).sum();
         //return Arrays.stream(matrix).flatMapToInt().sum();
     }
 

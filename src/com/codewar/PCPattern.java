@@ -1,14 +1,17 @@
+/*
 package codewar;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
+*/
 /**
  * Created with IDEA.
  * User:AndersonKim
  * Date:2017/5/26
  * Time:16:24
- */
+ *//*
+
 public class PCPattern {
     public static void main(String args[]) {
         BlockingQueue sq = new LinkedBlockingDeque<>();
@@ -61,3 +64,4 @@ public class PCPattern {
     }
 }
 
+*/

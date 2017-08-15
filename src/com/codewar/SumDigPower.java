@@ -1,14 +1,17 @@
+/*
 package codewar;
 
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Created with IDEA.
  * User:AndersonKim
  * Date:2017/5/23
  * Time:0:05
- */
+ *//*
+
 public class SumDigPower {
     public static List<Long> sumDigPow(long a, long b) {
         List<Long> numberArList = new ArrayList<>();        //returning ArrayList of Long
@@ -29,3 +32,4 @@ public class SumDigPower {
         return numberArList;
     }
 }
+*/

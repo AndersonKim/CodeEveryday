@@ -1,7 +1,3 @@
-package example;
-
-import com.sun.org.apache.bcel.internal.util.ClassPath;
-
 import java.io.*;
 
 /**
