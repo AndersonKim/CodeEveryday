@@ -33,6 +33,14 @@ public class FileMover {
     //移动目的地文件目录:注意使用\结尾才可以放到文件夹里面
     private static String destRoot = "F:\\其他\\新建文件夹\\";
 
+    public FileMover(String _type,String _destRoot) {
+        type=_type;
+        destRoot=_destRoot;
+    }
+
+    public FileMover() {
+    }
+
     /**
      * 获取指定文件类型路径
      * 重命名文件
