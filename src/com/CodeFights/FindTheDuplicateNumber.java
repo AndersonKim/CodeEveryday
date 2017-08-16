@@ -42,6 +42,7 @@ public class FindTheDuplicateNumber {
             Iterator<Map.Entry<Integer, Integer>> it = numAndDis.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry<Integer, Integer> entry = it.next();
+                //TODO if two same distance apperar????
                 if (min > entry.getValue()) {
                     min = entry.getValue();
                     result = entry.getKey();
