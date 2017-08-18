@@ -23,6 +23,10 @@ import java.util.List;
  * 2.重命名文件
  * 3.移动文件
  */
+
+/**
+ * 2017年8月18日
+ */
 public class FileMover {
     //目标文件类型
     public static String type = ".rmvb";
@@ -33,7 +37,7 @@ public class FileMover {
     //移动目的地文件目录:注意使用\结尾才可以放到文件夹里面
     private static String destRoot = "F:\\其他\\新建文件夹\\";
 
-    public FileMover(String _type,String _destRoot) {
+    public FileMover(String _type, String _destRoot) {
         type=_type;
         destRoot=_destRoot;
     }
@@ -124,11 +128,12 @@ public class FileMover {
      * @throws Exception
      */
     private static void indexDocs(File file, String type) throws Exception {
-        if (file.isDirectory()) {// 是不是目录
-            String[] files = file.list();// 返回该目录下所有文件及文件夹数组
-            Arrays.sort(files); // 排序
+        if (file.isDirectory()) {
+            // 返回该目录下所有文件及文件夹数组
+            String[] files = file.list();
+            Arrays.sort(files);
             for (int i = 0; i < files.length; i++) {
-                indexDocs(new File(file, files[i]), type); // 递归(File parent, String child)
+                indexDocs(new File(file, files[i]), type);
             }
         } else if (file.getPath().endsWith(type)) {
             fileList.add(new File(file.getParent() + "\\" + file.getName()));
