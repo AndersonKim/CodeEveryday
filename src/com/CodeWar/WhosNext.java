@@ -1,7 +1,4 @@
-package codewar;
-
-import java.util.ArrayList;
-import java.util.Queue;
+package CodeWar;
 
 /**
  * Created with IDEA.

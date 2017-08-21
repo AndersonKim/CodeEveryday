@@ -1,4 +1,4 @@
-package codewar;
+package CodeWar;
 
 public class BowlingExam {
     static String test1="";//300:X|X|X|X|X|X|X|X|X|X||XX

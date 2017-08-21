@@ -1,4 +1,4 @@
-package codewar;
+package CodeWar;
 
 /**
  * Created with IDEA.

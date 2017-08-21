@@ -1,14 +1,17 @@
-package codewar;
+/*
+package CodeWar;
 
 import java.text.DecimalFormat;
 import java.util.Map;
 
+*/
 /**
  * Created with IDEA.
  * User:AndersonKim
  * Date:2017/6/2
  * Time:7:30
- */
+ *//*
+
 public class P170602 {
     public static String getMiddle(String word) {
         if (word.length() % 2 == 1) {
@@ -67,10 +70,12 @@ public class P170602 {
     }
 
     public static String decodeResistorColors(String bands) {
-        /**
+        */
+/**
          * black: 0, brown: 1, red: 2, orange: 3, yellow: 4,
          * green: 5, blue: 6, violet: 7, gray: 8, white: 9
-         */
+ *//*
+
         int n[] = {0, 0, 0};
         int d = 0;
         String[] strs = bands.split(" ");
@@ -223,3 +228,4 @@ public class P170602 {
 
 
 }
+*/

@@ -1,6 +1,4 @@
-package codewar;
-
-import org.junit.Test;
+package CodeWar;
 
 /**
  * Created with IDEA.

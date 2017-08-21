@@ -1,4 +1,4 @@
-package codewar;
+package CodeWar;
 
 import java.util.List;
 
