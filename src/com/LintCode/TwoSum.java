@@ -3,6 +3,7 @@ package LintCode;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -129,16 +130,52 @@ public class TwoSum {
         }
         return result;
     }
+
+
+
+
+
+    /*
+        Thoughts:
+        Using a HashMap, O(n) space and O(n) time.
+        Thinking process:
+        Push everything into a HashMap.
+        Check if one element exist in the HashMap, if so save it. Meanwhile, save the other one.
+        Trick: after adding into the HashMap, we are looking for the 2nd index first.
+            Always check (target - current) from the HashMap.
+            If exist, that means index0 has already been pushed into the HashMap and current value is at index1.
+        (key, value) = (numbers[i], i)
+        Note: return index+1 because this is not 0-based.
+*/
+    public int [] TwoSum4(int[] numbers, int target){
+        if (numbers == null || numbers.length == 0) {
+            return null;
+        }
+        int[] rst = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(target - numbers[i])) {
+                rst[0] =map.get(target - numbers[i])+1;
+                rst[1] = i+1;
+                break;
+            } else {
+                map.put(numbers[i], i);
+            }
+        }
+        return rst;
+    }
+
     @Test
     public void testTwoSum1() {
         int[] array1 = {1, 2, 3};
-        int[] array2 = {1, 2, 3, 4};
+        int[] array2 = {1, 2, 7, 4};
         int sum1 = 8;
         int sum2=5;
         TwoSum twoSum= new TwoSum();
         // int[] result1=twoSum.TwoSum3(array1,sum1);
-        int[] result2 = twoSum.TwoSum3(array2, sum2);
+        int[] result2 = twoSum.TwoSum4(array2, sum2);
         // assertThat(result1,is(new int[]{0, 0}));
         assertThat(result2, is(new int[]{1,4}));
+
     }
 }
