@@ -95,7 +95,6 @@ public class TwoSum {
      * @param sum
      * @return
      */
-    //todo to compute the right answer
     public int[] TwoSum3(int[] array, int sum) {
         int[] result = {0, 0};
         if (array == null || array.length <= 1) {
@@ -119,13 +118,15 @@ public class TwoSum {
             }
         }
         //find the pos in origin array
+        int firstNum=copy_array[result[0]];
+        int secondNum=copy_array[result[1]];
         for (int i = 0; i < array.length; i++) {
-            if (copy_array[result[0]] == array[i])
+            if (firstNum == array[i]){
                 result[0] = i + 1;
-            if (copy_array[result[1]] == array[i])
-                result[1] = i + 1;
+            }else if (secondNum==array[i]){
+                result[1]=i+1;
+            }
         }
-
         return result;
     }
     @Test
