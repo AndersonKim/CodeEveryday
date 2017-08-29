@@ -1,3 +1,4 @@
+package com.Util;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
@@ -14,6 +15,10 @@ import java.net.URL;
  * User:AndersonKim
  * Date:2017/6/18
  * Time:11:35
+ */
+
+/***
+ * image resizing
  */
 public class ImageSizing {
     public static void main(String[] args) {

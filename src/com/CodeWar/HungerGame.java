@@ -1,4 +1,4 @@
-package CodeWar;
+package com.CodeWar;
 
 import org.junit.Test;
 

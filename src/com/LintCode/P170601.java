@@ -1,4 +1,4 @@
-package LintCode;
+package com.LintCode;
 
 /**
  * Created with IDEA.
@@ -6,10 +6,6 @@ package LintCode;
  * Date:2017/6/1
  * Time:15:25
  */
-
-import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * Given nums = [2, 7, 11, 15], target = 9
@@ -90,8 +86,7 @@ public class P170601 {
                 o++;
             }
         }
-        if (x == o) same = true;
-        else same = false;
+        same = x == o;
         return same;
     }
 

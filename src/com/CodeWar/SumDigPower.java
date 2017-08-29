@@ -1,20 +1,20 @@
-/*
-package codewar;
+
+package com.CodeWar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-*/
+
 /**
  * Created with IDEA.
  * User:AndersonKim
  * Date:2017/5/23
  * Time:0:05
- *//*
+ */
 
 public class SumDigPower {
     public static List<Long> sumDigPow(long a, long b) {
-        List<Long> numberArList = new ArrayList<>();        //returning ArrayList of Long
+        List<Long> numberArList = new ArrayList<Long>();        //returning ArrayList of Long
         while (a <= b) {                                       //inbetween the range
             String stringFromInt = new StringBuilder().append(a).toString();    //converting every number to string
             int[] intArFromString = new int[stringFromInt.length()];
@@ -32,4 +32,4 @@ public class SumDigPower {
         return numberArList;
     }
 }
-*/
+

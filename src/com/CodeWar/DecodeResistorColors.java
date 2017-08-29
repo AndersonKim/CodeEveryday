@@ -1,23 +1,23 @@
-/*
-package codewar;
+
+package com.CodeWar;
 
 import java.util.HashMap;
 import java.util.Map;
 
-*/
+
 /**
  * Created with IDEA.
  * User:AndersonKim
  * Date:2017/6/2
  * Time:9:50
- *//*
+ */
 
 public class DecodeResistorColors {
     //使用常量简化修改
     private static final int ONE_THOUSAND = 1000;
     private static final int ONE_MILLION = 1000000;
     //使用Map存储数据源
-    private static final Map<String, Integer> colorCodes = new HashMap<>();
+    private static final Map<String, Integer> colorCodes = new HashMap<String, Integer>();
 
     //静态块加载数据
     static {
@@ -33,13 +33,13 @@ public class DecodeResistorColors {
         colorCodes.put("white", 9);
     }
 
-    */
+
 /**
      * 解码颜色到数字
      *
      * @param bands
      * @return
-     *//*
+ */
 
     public static String decodeResistorColors(String bands) {
         String[] stripes = bands.split(" ");
@@ -77,13 +77,13 @@ public class DecodeResistorColors {
         return builder.toString();
     }
 
-    */
-/**
+
+    /**
      * 使用强制转换规则处理小数点
      *
      * @param value
      * @return
-     *//*
+     */
 
     private static String truncateZeros(double value) {
         int intValue = (int) value;
@@ -95,4 +95,4 @@ public class DecodeResistorColors {
         }
     }
 }
-*/
+

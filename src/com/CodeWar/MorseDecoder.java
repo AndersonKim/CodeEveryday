@@ -1,4 +1,4 @@
-package CodeWar;
+package com.CodeWar;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * simple decoder of morse code
- * https://www.codewars.com/kata/decode-the-morse-code/train/java
+ * https://www.com.CodeWars.com/kata/decode-the-morse-code/train/java
  */
 public class MorseDecoder {
     static Map<String, String> deCodeTable = new HashMap<String, String>();

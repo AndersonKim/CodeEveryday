@@ -1,3 +1,4 @@
+package com.Util;
 import java.io.*;
 
 /**
@@ -5,6 +6,10 @@ import java.io.*;
  * User:AndersonKim
  * Date:2017/5/29
  * Time:10:15
+ */
+
+/**
+ * usual file operations
  */
 public class FileUtil {
     public static void main(String[] args) {
@@ -21,8 +26,6 @@ public class FileUtil {
 
                     //fileUtil.stream_write_file(f,new FileOutputStream(f));
                     fileUtil.divide_file(f, 300);
-
-
 
 
                 }

@@ -1,4 +1,4 @@
-package LintCode;
+package com.LintCode;
 
 public class AaddB {
     /*
