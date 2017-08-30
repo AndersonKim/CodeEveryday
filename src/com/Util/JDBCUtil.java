@@ -1,8 +1,10 @@
 package com.Util;
 
+import com.Project.IdSpider.SFZ;
 import org.junit.Test;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * sample of JDBC util for mysql
@@ -194,5 +196,79 @@ public class JDBCUtil {
             }//end finally try
         }//end try
         System.out.println("Goodbye!");
+    }
+
+    /**
+     * using statement
+     * @param sfzArrayList
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void batch(ArrayList<SFZ> sfzArrayList) throws ClassNotFoundException, SQLException {
+        Class.forName(JDBC_DRIVER);
+
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        Statement stmt = conn.createStatement();
+
+        // Set auto-commit to false
+        conn.setAutoCommit(false);
+
+        for (SFZ sfz:sfzArrayList) {
+            //"INSERT INTO sfzinfo VALUES (null,'ander','123123123123',36,'阿斯顿','男')";
+            String sql1 = "INSERT INTO sfzinfo VALUES (null,'"+sfz.getName()+"','"+sfz.getId()+"',"+sfz.getAge()+",'"+sfz.getLocation()+"','"+sfz.getSex()+"')";
+            stmt.addBatch(sql1);
+        }
+
+        // Create an int[] to hold returned values
+        int[] count = stmt.executeBatch();
+        System.out.println(count+" size id add complete.");
+        //Explicitly commit statements to apply changes
+        conn.commit();
+
+        if (stmt != null)
+            conn.close();
+        if (conn != null)
+            conn.close();
+    }
+
+    /**
+     * using preparestatement
+     * @param sfzArrayList
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
+    public void batchPre(ArrayList<SFZ> sfzArrayList) throws ClassNotFoundException, SQLException {
+        Class.forName(JDBC_DRIVER);
+
+        Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        String presql="INSERT INTO sfzinfo VALUES (null,?,?,?,?,?)";
+        PreparedStatement stmt = conn.prepareStatement(presql);
+
+
+        // Set auto-commit to false
+        conn.setAutoCommit(false);
+
+        for (SFZ sfz:sfzArrayList) {
+            //"INSERT INTO sfzinfo VALUES (null,'ander','123123123123',36,'阿斯顿','男')";
+            stmt.setString(1,sfz.getName());
+            stmt.setString(2,sfz.getId());
+            stmt.setInt(3,sfz.getAge());
+            stmt.setString(4,sfz.getLocation());
+            stmt.setString(5,sfz.getSex());
+            stmt.addBatch();
+        }
+
+        // Create an int[] to hold returned values
+        int[] count = stmt.executeBatch();
+        System.out.println(count+" size id add complete.");
+        //Explicitly commit statements to apply changes
+        conn.commit();
+
+        if (stmt != null)
+            conn.close();
+        if (conn != null)
+            conn.close();
     }
 }

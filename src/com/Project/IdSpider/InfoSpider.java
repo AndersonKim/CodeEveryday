@@ -47,7 +47,7 @@ public class InfoSpider {
         return SFZList;
     }
 
-    @Test
+
     public void test() throws IOException {
         InfoSpider i = new InfoSpider();
         ArrayList<SFZ> a = i.getWebInfo();
