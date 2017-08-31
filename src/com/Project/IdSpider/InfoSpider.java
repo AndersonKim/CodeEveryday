@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -47,10 +48,14 @@ public class InfoSpider {
         return SFZList;
     }
 
+    @Test
+    public void test() throws IOException, SQLException, ClassNotFoundException {
 
-    public void test() throws IOException {
-        InfoSpider i = new InfoSpider();
-        ArrayList<SFZ> a = i.getWebInfo();
-        System.out.println(a.size());
+        InfoPersistence infoPersistence = new InfoPersistence();
+        InfoSpider infoSpider = new InfoSpider();
+        for (int i = 0; i < 1000000; i++) {
+            ArrayList<SFZ> a = infoSpider.getWebInfo();
+            infoPersistence.batch(a);
+        }
     }
 }

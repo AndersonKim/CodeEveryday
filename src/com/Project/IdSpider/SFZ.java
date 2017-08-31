@@ -4,11 +4,11 @@ package com.Project.IdSpider;
  * bean for id of PRC
  */
 public class SFZ {
-    String name;
-    String id;
-    String sex;
-    int age;
-    String location;
+    private String name;
+    private String id;
+    private String sex;
+    private int age;
+    private String location;
 
     public SFZ(String name, String id, String sex, int age, String location) {
         this.name = name;
