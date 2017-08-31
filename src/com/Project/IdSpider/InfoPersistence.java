@@ -103,7 +103,6 @@ public class InfoPersistence {
      *
      * @param sfzList
      */
-    @Test
     public void batch(ArrayList<SFZ> sfzList) {
         connectMySQL();
         try {

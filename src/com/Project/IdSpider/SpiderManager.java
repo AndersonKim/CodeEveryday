@@ -19,7 +19,6 @@ public class SpiderManager {
                 Thread a = new Thread(infoSpider);
                 a.run();
                 sfzArrayList.addAll(infoSpider.getSfzArrayList());
-                //System.out.println(sfzArrayList.size());
             }
             infoPersistence.batch(sfzArrayList);
         }
