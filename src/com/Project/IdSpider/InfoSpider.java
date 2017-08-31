@@ -4,10 +4,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.junit.Test;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -15,18 +13,42 @@ import java.util.ArrayList;
  * 1.get info from web
  * 2.put info inti object
  */
-public class InfoSpider {
+public class InfoSpider implements Runnable {
+    private ArrayList<SFZ> sfzArrayList = null;
+    private InfoPersistence infoPersistence = null;
+
+    public InfoSpider() {
+
+    }
+
+    public InfoSpider(InfoPersistence _infoPersistence) {
+        this.infoPersistence = _infoPersistence;
+    }
+
+    public InfoSpider(ArrayList<SFZ> _sfzArrayList) {
+        this.sfzArrayList = _sfzArrayList;
+    }
+
+    @Override
+    public void run() {
+        getWebInfo();
+    }
     /**
      * harvest the info into object list
      *
      * @return
      * @throws IOException
      */
-    public ArrayList<SFZ> getWebInfo() throws IOException {
-        ArrayList<SFZ> SFZList = new ArrayList<SFZ>();
-        Document doc = Jsoup.connect("http://i.8684.com/").get();
-        String title = doc.title();
-        System.out.println("reaching:" + title);
+    private synchronized void getWebInfo() {
+        sfzArrayList = new ArrayList<SFZ>();
+        Document doc = null;
+        try {
+            doc = Jsoup.connect("http://i.8684.com/").get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //String title = doc.title();
+        //System.out.println("reaching:" + title);
 
         //get all sensitive data
         Elements tables = doc.select("tr.date_tr2");
@@ -41,21 +63,14 @@ public class InfoSpider {
             String age = String.valueOf(each.childNode(2).childNode(0));
             String location = String.valueOf(each.childNode(3).childNode(0).childNode(0));
 
-            System.out.println(": " + name + "'s info get complete.");
-            SFZList.add(new SFZ(name, id, sex, Integer.parseInt(age), location));
+            //System.out.println(": " + name + "'s info get complete.");
+            sfzArrayList.add(new SFZ(name, id, sex, Integer.parseInt(age), location));
 
         }
-        return SFZList;
     }
 
-    @Test
-    public void test() throws IOException, SQLException, ClassNotFoundException {
 
-        InfoPersistence infoPersistence = new InfoPersistence();
-        InfoSpider infoSpider = new InfoSpider();
-        for (int i = 0; i < 1000000; i++) {
-            ArrayList<SFZ> a = infoSpider.getWebInfo();
-            infoPersistence.batch(a);
-        }
+    public ArrayList<SFZ> getSfzArrayList() {
+        return sfzArrayList;
     }
 }
