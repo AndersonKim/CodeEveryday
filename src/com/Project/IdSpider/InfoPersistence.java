@@ -80,20 +80,79 @@ public class InfoPersistence {
     }
 
     //delete record
-    public void delete() {
-
+    public void deleteById(int _id) {
+        connectMySQL();
+        try {
+            statement = connection.createStatement();
+            //DELETE FROM runoob_tbl Where _sfzid=
+            String sql = "DELETE FROM sfzinfo WHERE id="+_id+";";
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConn(resultSet, statement, connection);
+        }
     }
+
+
 
 
     //update record
-    public void update() {
+    public void updateById(int _id,SFZ sfz) {
+        connectMySQL();
+        try {
+            statement = connection.createStatement();
+            /**
+             * UPDATE `sfzinfo` SET `_name`='asdasd',`_sfzid`='asdasdasdasd',`_age`=12,`_location`='asdasd',`_sex`='asd' WHERE id=2
+             */
+            String sql = "UPDATE `sfzinfo` SET" +
+                    "`_name`='"+sfz.getName()+"'," +
+                    "`_sfzid`='"+sfz.getId()+"'," +
+                    "`_age`="+sfz.getAge()+"," +
+                    "`_location`='"+sfz.getLocation()+"'," +
+                    "`_sex`='"+sfz.getSex()+
+                    "'WHERE id = "+_id+";";
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConn(resultSet, statement, connection);
+        }
+    }
+    @Test
+    public void test(){
+        System.out.println(search("你猜").getLocation());
 
     }
 
-
     //search record
-    public void search() {
+    public SFZ search(String name) {
+        connectMySQL();
+        String _name="";
+        String _sex="";
+        int _age=-1;
+        String _location="";
+        String _sfzid="";
+        try {
+            statement = connection.createStatement();
 
+            String sql = "SELECT * from `sfzinfo` WHERE  _name= '"+name+"';";
+            resultSet=statement.executeQuery(sql);
+
+            while(resultSet.next()){
+                _name=resultSet.getString("_name");
+                _sex=resultSet.getString("_sex");
+                _location=resultSet.getString("_location");
+                _sfzid=resultSet.getString("_sfzid");
+                _age=Integer.parseInt(resultSet.getString("_age"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.closeConn(resultSet, statement, connection);
+        }
+    return new SFZ(_name,_sfzid,_sex,_age,_location);
     }
 
 
