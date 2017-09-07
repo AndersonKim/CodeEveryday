@@ -43,9 +43,42 @@ public class Alpha {
         return result;
     }
 
+    /**
+     * 使用当前行数与页面的每页数量生成对应的每页的行数范围
+     * ex：
+     * 1000行/10行=100页
+     * 第i页包含第i项到第i+10项
+     *
+     * 递推
+     * sum/page_size=page_number
+     * i->i~i+page_size
+     *
+     * 问题简化为：如何在数据库中检索第i项到第i+offset项
+     */
 
-    public void initialPage(){
-
+    /**
+     * 获取某一页的结果集
+     * @param pageNumber 页码
+     * @param pageSize 页面大小
+     * @return
+     */
+    public ResultSet getPage(int pageNumber,int pageSize){
+        ResultSet result=null;
+        connection=JDBCUtil.getMySQLConn();
+        try {
+            //SELECT * FROM table LIMIT 5,10;  // 检索记录行 6-15
+            statement=connection.createStatement();
+            //计算对应的行数
+            int sline=pageNumber*pageSize;
+            String sql="SELECT * FROM sfzinfo LIMIT "+sline+","+pageSize+";";
+            resultSet=statement.executeQuery(sql);
+            result=resultSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JDBCUtil.closeConn(resultSet,statement,connection);
+        }
+        return result;
     }
 
     @Test
