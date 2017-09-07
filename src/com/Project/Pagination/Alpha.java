@@ -15,6 +15,7 @@ public class Alpha {
      * 1.获取当前数据表的行数
      * 2.根据分页的条件对总体数据进行处理
      */
+
     Connection connection = null;
     ResultSet resultSet = null;
     PreparedStatement preparedStatement = null;
@@ -42,6 +43,10 @@ public class Alpha {
         return result;
     }
 
+
+    public void initialPage(){
+
+    }
 
     @Test
     public void get(){
