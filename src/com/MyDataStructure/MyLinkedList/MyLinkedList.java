@@ -70,8 +70,9 @@ public class MyLinkedList {
         MyNode pre;
         while (current.next!=null){
             if (current.data.equals(data)){
-                pre.next=current.next;
+
             }else{
+                pre=current;
                 current=current.next;
             }
         }
