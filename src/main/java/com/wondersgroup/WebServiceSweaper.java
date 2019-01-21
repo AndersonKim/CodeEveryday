@@ -1,11 +1,9 @@
 package com.wondersgroup;
 
 import com.Util.FileHandler;
+import org.junit.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +28,7 @@ public class WebServiceSweaper {
         fileList=new ArrayList<File>(Arrays.asList(getFileList(root)));
         //2.3
         for (File file:fileList){
+            System.out.println(file.getName());
             processFileWithPath(file);
         }
 
@@ -37,16 +36,56 @@ public class WebServiceSweaper {
 
     }
 
+    /**
+     * edit by AndersonKim
+     * @Date：2019/1/21
+     * @Description：读取输入文件的每行的内容并将@Path的内容提取出来
+     */
     private void processFileWithPath(File file) {
         try {
-            FileInputStream fileInputStream=new FileInputStream(file);
-            InputStreamReader inputStreamReader=new InputStreamReader(fileInputStream);
+            FileReader fileReader=new FileReader(file);
+            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            while(true) {
+                String nextLine=bufferedReader.readLine();
+                if(nextLine==null)
+                    break;
+                //System.out.println("got:"+nextLine);
+                webServiceLineFilter(nextLine);
+            }
+            bufferedReader.close();
 
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * edit by AndersonKim
+     * @Date：2019/1/21
+     * @Description：将改行中@Path的路由输出
+     */
+    private void webServiceLineFilter(String nextLine) {
+        if(nextLine.contains("@Path(\"")){
+            int firstPos=nextLine.indexOf("\"");
+            int lastPos=nextLine.lastIndexOf("\"");
+            System.out.println(nextLine.substring(firstPos+1,lastPos));
+        }
+    }
+
+    @Test
+    public void testProcessFileWithPath() {
+        WebServiceSweaper webServiceSweaper=new WebServiceSweaper();
+        webServiceSweaper.getWebServicePath("filpath");
+
+    }
+
+    /**
+     * edit by AndersonKim
+     * @Date：2019/1/21
+     * @Description：获取指定文件夹中的所有webservice的Java原文件
+     */
     private File[] getFileList(String root) {
         File rootFile=new File(root);
         return rootFile.listFiles();
